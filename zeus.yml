@@ -57,6 +57,7 @@
     - include: tasks/old-releases.yml
     - include: tasks/jenkins.yml
     - include: tasks/java-certs.yml
+    - include: tasks/maven.yml
 
     - name: " ******* STAGE 5 *******"
       debug: msg=" >>> Monitoring and Cronjobs <<<"
