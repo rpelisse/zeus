@@ -22,3 +22,20 @@
     group: root
     mode: 0755
   loop: "{{ harmonia_target_files }}"
+
+- name: "Set up shared directory for jboss-set maven repo: {{ jboss_set_shared_maven_repo.path }}"
+  block:
+    file:
+      path: "{{ jboss_set_shared_maven_repo.path }}"
+      state: directory
+      owner: jboss
+      group: jboss-set
+      mode: 2775
+
+  - name: "Change group of {{ jboss_set_shared_maven_repo.path }}"
+    command: "chgrp -R jboss-set {{ jboss_set_shared_maven_repo.path }}"
+
+  - name: "Set propers ACL for {{ jboss_set_shared_maven_repo.path }}"
+    command: "chmod 2775 -R jboss-set {{ jboss_set_shared_maven_repo.path }}"
+  creates: "{{ jboss_set_shared_maven_repo.path }}"
+

@@ -111,6 +111,10 @@ server {
       include /etc/nginx/proxy.conf;
     }
 
+    location /{{ jboss_set_shared_maven_repo.name }} {
+      index {{ jboss_set_shared_maven_repo.path }};
+    }
+
     # redirect server error pages to the static page /50x.html
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
