@@ -42,4 +42,4 @@
 
     - name: "Set propers ACL for {{ jboss_set_shared_maven_repo.path }}"
       command: "chmod 2775 -R jboss-set {{ jboss_set_shared_maven_repo.path }}"
-  when: "{{ jboss_set_shared_folder_state.stat.exists == false  }}"
+  when: jboss_set_shared_folder_state.stat.exists == false
