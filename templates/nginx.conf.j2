@@ -36,6 +36,11 @@ server {
     }
        {% endif %}
     {% endfor %}
+
+    location /{{ jboss_set_shared_maven_repo.name }} {
+      root {{ jboss_set_shared_maven_repo.path }};
+      autoindex on;
+    }
 }
 {% if 'thunder' in ansible_hostname %}
 server {
@@ -112,7 +117,8 @@ server {
     }
 
     location /{{ jboss_set_shared_maven_repo.name }} {
-      index {{ jboss_set_shared_maven_repo.path }};
+      root {{ jboss_set_shared_maven_repo.path }};
+      autoindex on;
     }
 
     # redirect server error pages to the static page /50x.html
